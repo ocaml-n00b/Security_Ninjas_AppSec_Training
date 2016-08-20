@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-		<title>A7 : Missing Function Level Access Control</title>
+		<title>A4 : Insecure Direct Object References</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -18,81 +18,56 @@
 		</noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
-		<script src="ac.js"></script>
-
 	</head>
 	<body>
 
 		<!-- Nav -->
-			<nav id="nav">
-				<ul class="container">
-					<img src="images/ninja.png" alt="" width="8.5%" height="8.5%" align="left" />
-					<li><a href="a1.html">A1</a></li>
-					<li><a href="a2.html">A2</a></li>
-					<li><a href="a3.html">A3</a></li>
-					<li><a href="a4.html">A4</a></li>
-					<li><a href="a5.html">A5</a></li>
-					<li><a href="a6.html">A6</a></li>
-					<li><a href="a7.html">A7</a></li>
-					<li><a href="a8.html">A8</a></li>
-					<li><a href="a9.html">A9</a></li>
-					<li><a href="a10.html">A10</a></li>
-					<!-- <li><img src="images/opendns_logo.png" alt="" width="65.5%" height="65.5%" align="right" /> -->
-				</ul>
-			</nav>
+			<?php echo file_get_contents("./nav.html"); ?>
+			
 			<div class="wrapper style2">
 				<article id="work">
 					
-						<h5>A7 : Missing Function Level Access Control</h5>
+						<h5>A4 : Insecure Direct Object References</h5>
 					
+				
 					<div class="container">
-							
 
-							<br>
-
-							<a href="function_AC.php?operation=view&is_admin=false">OpenDNS Leadership</a>
-
-							<div id="admin_view">
-
-							  <script language="javascript" type="text/javascript">
-							  	add_style();
-							  </script>
-							<form name="input" action="function_AC.php?operation=add&is_admin=true" method="post">
-								Name <input type="text" name="name"><br>
-								Description <input type="text" name="description"><br>
-								<input type="submit" value="Submit">
-							</form>					
+<a href="6e6f6e5f636f6e666964656e7469616c.pdf">Non-confidential document</a>				
 					</div>
 					
 				</article>
 			</div>
 
-		
-		
+
 			<div class="wrapper style4">
 				<article id="contact" class="container small">
 					<header>
 				
-						<p>There is a function on this page that lacks Access Control.</p>
-						Look at the source code to find out the hidden function.	
-						
+						<p>Link to a non-confidential document is provided here. Can you find a confidential document on the server?</p>
 					</header>
 					<div>
-						
 						<div class="row">
 							<div class="12u">
 							<ul>
 							<li><H5 style="cursor: pointer" onclick="toggleBlock(this, 'hint1');"> Hint 1 </H5>
 							<DIV id="hint1" style="display:none">
 							<P>
-							Look at the div with id 'admin_view'
+							Can you make out anything from how the document is named?
 							</P>
+							</DIV></li>
+
+							<li><H5 style="cursor: pointer" onclick="toggleBlock(this, 'hint2');"> Hint 2 </H5>
+							<DIV id="hint2" style="display:none">
+							<P>
+							Decode the document name (ASCII-HEX)
+							</P>
+							
 							</DIV></li>
 
 							<li><H5 style="cursor: pointer" onclick="toggleBlock(this, 'solution');"> Solution </H5>
 							<DIV id="solution" style="display:none">
 							<P>
-							Remove the style 'display:none' in the div with id 'admin_view' to make the hidden div visible. As this function lacks server side access control, you would be able to exploit this functionality.
+							636f6e666964656e7469616c.pdf <br>i.e. ASCII-HEX of "confidential"
 							</P>
 							
 							</DIV></li>
@@ -108,6 +83,7 @@
 					</footer>
 				</article>
 			</div>
+
 
 	</body>
 </html>

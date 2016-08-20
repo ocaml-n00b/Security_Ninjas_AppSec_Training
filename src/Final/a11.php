@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-		<title>A1 : INJECTION</title>
+		<title>A11 : SQL Injection</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -18,35 +18,32 @@
 		</noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+
+
 	</head>
 	<body>
+		<!-- NavBar -->
+		<?php echo file_get_contents("./nav.html"); ?>
 
-		<!-- Nav -->
-			<?php echo file_get_contents("./nav.html"); ?>
-
-		
 			<div class="wrapper style2">
 				<article id="work">
-					<header>
-						<h5>A1 : Injection</h5>
-					</header>
+					
+						<h5>A11 : SQL Injection</h5>
+					
 					<div class="container">
-							<?php
+							<b>Login (Again)</b>
 
-							$domain = $_GET['site'];
-
-							echo "<b>Whois Lookup results for <font color='green'>$domain</font> <br><br><br></b>";
-							$cmd = "whois ".$domain;
-
-							echo $result = system($cmd);
-
-
-							//echo $result = system('whois $domain');
-
-							?>
-							</div>
-		
+							<br>
+						<form method="POST" action="a11_ac.php">
+							
+							Username <input type="text" name="uname"><br>
+							Password <input type="password" name="pwd">
+							<br>
+							<input type="submit" value="Submit">
+							
 						
+						</form>
+											
 					</div>
 					
 				</article>
@@ -58,7 +55,7 @@
 				<article id="contact" class="container small">
 					<header>
 				
-						<p>There can be many types of Injection. This page has an OS Command Injection flaw.</p>
+						<p>There can be many types of Injection. This page has an SQL Command Injection flaw.</p>
 					</header>
 					<div>
 						<div class="row">
@@ -67,15 +64,14 @@
 							<li><H5 style="cursor: pointer" onclick="toggleBlock(this, 'hint1');"> Hint 1 </H5>
 							<DIV id="hint1" style="display:none">
 							<P>
-							Manipulate Domain Name to inject an OS Command
+							Manipulate the fields that reach the database to inject an SQL Command
 							</P>
-							
 							</DIV></li>
 
 							<li><H5 style="cursor: pointer" onclick="toggleBlock(this, 'hint2');"> Hint 2 </H5>
 							<DIV id="hint2" style="display:none">
 							<P>
-							Use a separator (;) to inject an OS command in the Domain Name
+							Use a SQL string (') to escape and inject an SQL command in the query.
 							</P>
 							
 							</DIV></li>
@@ -83,7 +79,7 @@
 							<li><H5 style="cursor: pointer" onclick="toggleBlock(this, 'solution');"> Solution </H5>
 							<DIV id="solution" style="display:none">
 							<P>
-							{domain name}; {OS command}<br> e.g. &nbsp;  google.com; pwd
+							{SELECT * FROM users WHERE user = }.{'$userInput'}<br> e.g. username = ' OR 1=1; {with the semi-colon and '}
 							</P>
 							
 							</DIV></li>
@@ -102,4 +98,3 @@
 
 	</body>
 </html>
-

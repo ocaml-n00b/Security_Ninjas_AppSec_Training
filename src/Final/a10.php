@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-		<title>A4 : Insecure Direct Object References</title>
+		<title>A10 : Unvalidated Redirects and Forwards</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -22,58 +22,56 @@
 	<body>
 
 		<!-- Nav -->
-			<nav id="nav">
-				<ul class="container">
-					<img src="images/ninja.png" alt="" width="8.5%" height="8.5%" align="left" />
-					<li><a href="a1.html">A1</a></li>
-					<li><a href="a2.html">A2</a></li>
-					<li><a href="a3.html">A3</a></li>
-					<li><a href="a4.html">A4</a></li>
-					<li><a href="a5.html">A5</a></li>
-					<li><a href="a6.html">A6</a></li>
-					<li><a href="a7.html">A7</a></li>
-					<li><a href="a8.html">A8</a></li>
-					<li><a href="a9.html">A9</a></li>
-					<li><a href="a10.html">A10</a></li>
-					<!-- <li><img src="images/opendns_logo.png" alt="" width="65.5%" height="65.5%" align="right" /> -->
-				</ul>
-			</nav>
+			<?php echo file_get_contents("./nav.html"); ?>
+			
 			<div class="wrapper style2">
 				<article id="work">
 					
-						<h5>A4 : Insecure Direct Object References</h5>
+						<h5>A10 : Unvalidated Redirects and Forwards</h5>
 					
-				
 					<div class="container">
+							<b>Confirm that you are not a bot</b>
+							<br>Verify the image below to get access (case and space sensitive)
+							<p>
+							</p>
 
-<a href="6e6f6e5f636f6e666964656e7469616c.pdf">Non-confidential document</a>				
+							<center><img src="images/a.jpeg" alt="image" align="center"></center>
+							
+							<br>
+							<form name="captchaform" action="check_bots.php" method="get">
+							    Text <input type="text" name="captcha"><br>
+							    <input type="hidden" name="redirect_to" value="opendns.com">
+							    <input type="submit" value="Submit">
+
+							</form>				
 					</div>
 					
 				</article>
 			</div>
 
-
+	
 			<div class="wrapper style4">
 				<article id="contact" class="container small">
 					<header>
 				
-						<p>Link to a non-confidential document is provided here. Can you find a confidential document on the server?</p>
+						<p>Can you alter the redirect location?</p>
 					</header>
 					<div>
+						
 						<div class="row">
 							<div class="12u">
 							<ul>
 							<li><H5 style="cursor: pointer" onclick="toggleBlock(this, 'hint1');"> Hint 1 </H5>
 							<DIV id="hint1" style="display:none">
 							<P>
-							Can you make out anything from how the document is named?
+							Look at all parameters being sent to the server
 							</P>
 							</DIV></li>
 
 							<li><H5 style="cursor: pointer" onclick="toggleBlock(this, 'hint2');"> Hint 2 </H5>
 							<DIV id="hint2" style="display:none">
 							<P>
-							Decode the document name (ASCII-HEX)
+							Edit the parameter 'redirect_to' to include a malicious URL. Note that there is validation done on the redirect location on the back end but that is imperfect.
 							</P>
 							
 							</DIV></li>
@@ -81,7 +79,7 @@
 							<li><H5 style="cursor: pointer" onclick="toggleBlock(this, 'solution');"> Solution </H5>
 							<DIV id="solution" style="display:none">
 							<P>
-							636f6e666964656e7469616c.pdf <br>i.e. ASCII-HEX of "confidential"
+							Edit redirect_to to opendns.com.{bad URL} <br> e.g. opendns.com.internetbadguys.com
 							</P>
 							
 							</DIV></li>

@@ -22,67 +22,33 @@
 	<body>
 
 		<!-- Nav -->
-			<nav id="nav">
-				<ul class="container">
-					<img src="images/ninja.png" alt="" width="8.5%" height="8.5%" align="left" />
-					<li><a href="a1.html">A1</a></li>
-					<li><a href="a2.html">A2</a></li>
-					<li><a href="a3.html">A3</a></li>
-					<li><a href="a4.html">A4</a></li>
-					<li><a href="a5.html">A5</a></li>
-					<li><a href="a6.html">A6</a></li>
-					<li><a href="a7.html">A7</a></li>
-					<li><a href="a8.html">A8</a></li>
-					<li><a href="a9.html">A9</a></li>
-					<li><a href="a10.html">A10</a></li>
-					<!-- <li><img src="images/opendns_logo.png" alt="" width="65.5%" height="65.5%" align="right" /> -->
-				</ul>
-			</nav>
-
-		
+			<?php echo file_get_contents("./nav.html"); ?>
+			
 			<div class="wrapper style2">
 				<article id="work">
-					<header>
+					
 						<h5>A2 : Broken Authentication and Session Management</h5>
-					</header>
+					
 					<div class="container">
-							<?php
 
-								$uname = $_POST['uname'];
-								$pass = $_POST['pwd'];
-								
-								//verify_credentials($uname,$pass);
-								if(($uname=='user1')&&($pass=='145_Bluxome'))
-								{	
-									$hash1 = hash("sha1", "user1");
-									echo '<script>document.cookie="sessionID='.$hash1.'";</script>';
-									echo "Login successful as $uname!<br>";
-									echo "<a href=user_details.php>View personal details</a>";
-								}
-								elseif(($uname=='user2')&&($pass=='xxww!'))
-								{
-									$hash2 = hash("sha1", "user2");
-									echo '<script>document.cookie="sessionID='.$hash2.'";</script>';
-									echo "Login successful as $uname!<br>";
-									echo "<a href=user_details.php>View personal details</a>";
-								}	
-								else
-								{	
-									echo "Failed login<br>";
-									echo "<a href=a2.html>Please Login</a>";
+							<b>Login to view Personal Information</b><br><br>
 
-								}	
+							<form method="POST" action="a2_login.php">
+							Username <input type="text" name="uname"><br>
+							Password <input type="password" name="pwd">
+							<br>
+							<input type="submit" value="Submit">
+							</form>
 
-							?>
-
-							</div>
-						
+							</div>					
 					</div>
 					
 				</article>
 			</div>
 
-		<div class="wrapper style4">
+		
+		
+			<div class="wrapper style4">
 				<article id="contact" class="container small">
 					<header>
 				
@@ -98,7 +64,7 @@
 							<li><H5 style="cursor: pointer" onclick="toggleBlock(this, 'hint1');"> Hint 1 </H5>
 							<DIV id="hint1" style="display:none">
 							<P>
-							Login as user1 and see how Session Management is being done
+							Login as user1 and see how Session Management is being done.
 							</P>
 							</DIV></li>
 
@@ -129,6 +95,6 @@
 					</footer>
 				</article>
 			</div>
+
 	</body>
 </html>
-

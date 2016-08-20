@@ -1,6 +1,6 @@
 FROM ubuntu:trusty
 RUN apt-get -q update && apt-get install -y apache2
-RUN apt-get -q update && apt-get install -y sqlite
+RUN apt-get install -y sqlite
 RUN apt-get install -y php5 libapache2-mod-php5 php5-mcrypt php5-sqlite
 RUN apt-get install -y php5-common
 RUN apt-get install -y whois

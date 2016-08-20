@@ -49,22 +49,8 @@
 	<body>
 
 		<!-- Nav -->
-			<nav id="nav">
-				<ul class="container">
-					<img src="images/ninja.png" alt="" width="8.5%" height="8.5%" align="left" />
-					<li><a href="a1.html">A1</a></li>
-					<li><a href="a2.html">A2</a></li>
-					<li><a href="a3.html">A3</a></li>
-					<li><a href="a4.html">A4</a></li>
-					<li><a href="a5.html">A5</a></li>
-					<li><a href="a6.html">A6</a></li>
-					<li><a href="a7.html">A7</a></li>
-					<li><a href="a8.html">A8</a></li>
-					<li><a href="a9.html">A9</a></li>
-					<li><a href="a10.html">A10</a></li>
-					<!-- <li><img src="images/opendns_logo.png" alt="" width="65.5%" height="65.5%" align="right" /> -->
-				</ul>
-			</nav>
+			<?php echo file_get_contents("./nav.html"); ?>
+			
 			<div class="wrapper style2">
 				<article id="work">
 					
@@ -72,9 +58,9 @@
 					
 					<div class="container">
 						<form name="inputform" action="store_users.php" onsubmit="return validateForm();" method="post">
-							Name: <input type="text" name="name"><br>
-							Username: <input type="text" name="uname"><br>
-							Password: <input type="password" name="password"><br>
+							Name <input type="text" name="name"><br>
+							Username <input type="text" name="uname"><br>
+							Password <input type="password" name="password"><br>
 							<input type="submit" value="Submit">
 
 						</form>					
@@ -89,20 +75,28 @@
 				<article id="contact" class="container small">
 					<header>
 				
-						<p>Login credentials for you -  
-							&nbsp;
-							username: user1
-							&nbsp;
-							password: 145_Bluxome
-						</p><p><br>
-							There is another user. You have to steal his personal information but for that you need to bypass authentication / login as him.</p>
+						<p>Textbox inputs are not validated/ sanitized properly</p>
 					</header>
 					<div>
+						
 						<div class="row">
 							<div class="12u">
 							<ul>
-							<li>	Hint 1: Manipulate Domain Name to include OS Command </li>
-							<li>	Solution: {domain name}; {OS command}. e.g. google.com; pwd</li>
+							<li><H5 style="cursor: pointer" onclick="toggleBlock(this, 'hint1');"> Hint 1 </H5>
+							<DIV id="hint1" style="display:none">
+							<P>
+							Inject a script in the Name or Username field
+							</P>
+							</DIV></li>
+
+							<li><H5 style="cursor: pointer" onclick="toggleBlock(this, 'solution');"> Solution </H5>
+							<DIV id="solution" style="display:none">
+							<P>
+							Enter any malicious javascript code. e.g., &lt;script&gt;window.location.href = &quot;http://opendns.com&quot;;&lt;/script&gt;
+							</P>
+							
+							</DIV></li>
+							
 							</ul>
 							</div>
 						</div>
@@ -114,6 +108,5 @@
 					</footer>
 				</article>
 			</div>
-
 	</body>
 </html>

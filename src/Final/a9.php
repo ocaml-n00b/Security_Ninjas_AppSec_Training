@@ -2,7 +2,7 @@
 
 <html>
 	<head>
-		<title>A2 : Broken Authentication and Session Management</title>
+		<title>A9 : Using Components with Known Vulnerabilities</title>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -18,43 +18,25 @@
 		</noscript>
 		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+		<script src="jquery-1.6.1.js"></script>
+		<script>
+		    $(function(){
+		        try { $(location.hash) } catch(e) {}
+		    })
+		</script>
 	</head>
 	<body>
 
 		<!-- Nav -->
-			<nav id="nav">
-				<ul class="container">
-					<img src="images/ninja.png" alt="" width="8.5%" height="8.5%" align="left" />
-					<li><a href="a1.html">A1</a></li>
-					<li><a href="a2.html">A2</a></li>
-					<li><a href="a3.html">A3</a></li>
-					<li><a href="a4.html">A4</a></li>
-					<li><a href="a5.html">A5</a></li>
-					<li><a href="a6.html">A6</a></li>
-					<li><a href="a7.html">A7</a></li>
-					<li><a href="a8.html">A8</a></li>
-					<li><a href="a9.html">A9</a></li>
-					<li><a href="a10.html">A10</a></li>
-					<!-- <li><img src="images/opendns_logo.png" alt="" width="65.5%" height="65.5%" align="right" /> -->
-				</ul>
-			</nav>
+			<?php echo file_get_contents("./nav.html"); ?>
+			
 			<div class="wrapper style2">
 				<article id="work">
 					
-						<h5>A2 : Broken Authentication and Session Management</h5>
+						<h5>A9 : Using Components with Known Vulnerabilities</h5>
 					
 					<div class="container">
-
-							<b>Login to view Personal Information</b><br><br>
-
-							<form method="POST" action="a2.php">
-							Username <input type="text" name="uname"><br>
-							Password <input type="password" name="pwd">
-							<br>
-							<input type="submit" value="Submit">
-							</form>
-
-							</div>					
+							<br><br>		Helloo!			<br><br>		
 					</div>
 					
 				</article>
@@ -66,11 +48,9 @@
 				<article id="contact" class="container small">
 					<header>
 				
-						<p>There is a flaw in the way this page handles authentication and sessions.</p>
+						<p>There is a publicly known vulnerability in one of the components that this page uses</p>
 					</header>
 					<div>
-						There is a login required to view personal information. <br>Login credentials for user1 : username - 'user1', password - '145_Bluxome' <br>
-						There is another user with username 'user2'. You have to steal his personal information by exploiting the vulnerability on this page.<br><br>	
 						
 						<div class="row">
 							<div class="12u">
@@ -78,14 +58,15 @@
 							<li><H5 style="cursor: pointer" onclick="toggleBlock(this, 'hint1');"> Hint 1 </H5>
 							<DIV id="hint1" style="display:none">
 							<P>
-							Login as user1 and see how Session Management is being done.
+							Look at all the libraries used on this page. Search the web to explore if they have any vulnerabilities. 
 							</P>
 							</DIV></li>
 
 							<li><H5 style="cursor: pointer" onclick="toggleBlock(this, 'hint2');"> Hint 2 </H5>
 							<DIV id="hint2" style="display:none">
 							<P>
-							Look at the session cookie. Does it look predictable?
+							This page uses jquery-1.6.1 <br><a href="http://www.cvedetails.com/cve/CVE-2011-4969/" target="_blank" >CVE details</a>
+							<br><a href="http://blog.mindedsecurity.com/2011/07/jquery-is-sink.html" target="_blank">Exploit details</a>							
 							</P>
 							
 							</DIV></li>
@@ -93,7 +74,7 @@
 							<li><H5 style="cursor: pointer" onclick="toggleBlock(this, 'solution');"> Solution </H5>
 							<DIV id="solution" style="display:none">
 							<P>
-							sessionID cookie is a SHA1 hash of the username. Replace SHA1(user1) in the cookie by SHA1(user2) to authenticate as user2. <br>i.e.  sessionID=a1881c06eec96db9901c7bbfe41c42a3f08e9cb4
+							Append "#&lt;img src=x onerror=alert(1)&gt;" at the end of the URL. Note that this proof of concept attack might not pop up an alert if your browser has anti-XSS protections. You might need to refresh the page or wait for a few moments for the pop up to actually show.
 							</P>
 							
 							</DIV></li>
